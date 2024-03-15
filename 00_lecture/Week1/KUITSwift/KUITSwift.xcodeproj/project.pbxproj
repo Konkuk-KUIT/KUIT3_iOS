@@ -1,0 +1,74 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXFileReference section */
+		51BED7D92BA4A39600E95F87 /* StructAndClass.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = StructAndClass.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		51BED7D22BA4A38100E95F87 = {
+			isa = PBXGroup;
+			children = (
+				51BED7D92BA4A39600E95F87 /* StructAndClass.playground */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		51BED7D32BA4A38100E95F87 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1520;
+			};
+			buildConfigurationList = 51BED7D62BA4A38100E95F87 /* Build configuration list for PBXProject "KUITSwift" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 51BED7D22BA4A38100E95F87;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		51BED7D72BA4A38100E95F87 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		51BED7D82BA4A38100E95F87 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		51BED7D62BA4A38100E95F87 /* Build configuration list for PBXProject "KUITSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				51BED7D72BA4A38100E95F87 /* Debug */,
+				51BED7D82BA4A38100E95F87 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 51BED7D32BA4A38100E95F87 /* Project object */;
+}
