@@ -139,6 +139,367 @@ struct ContentView: View {
                 }
                 .foregroundColor(.white)
                 .padding(.horizontal, 15)
+                
+                VStack(alignment: .leading, spacing: 10) {
+                                    HStack {
+                                        Image(systemName: "calendar")
+                                            .resizable()
+                                            .frame(width: 10, height: 10)
+                                        Text("10일간의 일기예보")
+                                            .font(.system(size: 10))
+                                    }
+                                    .foregroundColor(.white.opacity(0.7))
+                                    Divider()
+                                        .background()
+                                    HStack() {
+                                        Text("오늘")
+                                            .frame(width: 30, alignment: .leading)
+                                        Spacer()
+                                        Image(systemName: "moon.fill")
+                                        Spacer()
+                                        Text("0º")
+                                        ZStack(alignment: .leading) {
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .frame(width: screenWidth*0.3, height: 4)
+                                                .foregroundStyle(.black.opacity(0.6))
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .frame(width: screenWidth*0.13, height: 4)
+                                                .foregroundStyle(.blue)
+                                                .padding(.leading, 10)
+                                            
+                                            ZStack {
+                                                Circle()
+                                                    .frame(width: 9, height: 9)
+                                                    .foregroundColor(.black)
+                                                Circle()
+                                                    .frame(width: 7, height: 7)
+                                            }
+                                            .padding(.leading, 20)
+                                        }
+                                        Text("9º")
+                                    }
+                                    
+                                    Divider()
+                                        .background()
+                                    HStack {
+                                        Text("목")
+                                            .frame(width: 30, alignment: .leading)
+                                        Spacer()
+                                        Image(systemName: "sun.max.fill")
+                                            .foregroundColor(.yellow)
+                                        Spacer()
+                                        Text("0º")
+                                        ZStack(alignment: .leading) {
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .frame(width: screenWidth*0.3, height: 4)
+                                                .foregroundStyle(.black.opacity(0.6))
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .frame(width: screenWidth*0.2, height: 4)
+                                                .foregroundStyle(.blue)
+                                            
+                                            ZStack {
+                                                Circle()
+                                                    .frame(width: 9, height: 9)
+                                                    .foregroundColor(.black)
+                                                Circle()
+                                                    .frame(width: 7, height: 7)
+                                            }
+                                            .padding(.leading, 15)
+                                        }
+                                        Text("9º")
+                                    }
+                                    
+                                    
+                                    Divider()
+                                        .background()
+                                    HStack {
+                                        Text("금")
+                                            .frame(width: 30, alignment: .leading)
+                                        Spacer()
+                                        Image(systemName: "cloud.fill")
+                                        Spacer()
+                                        Text("0º")
+                                        ZStack(alignment: .leading) {
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .frame(width: screenWidth*0.3, height: 4)
+                                                .foregroundStyle(.black.opacity(0.6))
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .frame(width: screenWidth*0.2, height: 4)
+                                                .foregroundStyle(.blue)
+                                            
+                                            ZStack {
+                                                Circle()
+                                                    .frame(width: 9, height: 9)
+                                                    .foregroundColor(.black)
+                                                Circle()
+                                                    .frame(width: 7, height: 7)
+                                            }
+                                            .padding(.leading, 15)
+                                        }
+                                        Text("9º")
+                                    }
+                                    
+                                    
+                                    Divider()
+                                        .background()
+                                    HStack {
+                                        Text("토")
+                                            .frame(width: 30, alignment: .leading)
+                                        Spacer()
+                                        Image(systemName: "cloud.rain.fill")
+                                        Spacer()
+                                        Text("0º")
+                                        ZStack(alignment: .leading) {
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .frame(width: screenWidth*0.3, height: 4)
+                                                .foregroundStyle(.black.opacity(0.6))
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .frame(width: screenWidth*0.2, height: 4)
+                                                .foregroundStyle(.blue)
+                                            
+                                            ZStack {
+                                                Circle()
+                                                    .frame(width: 9, height: 9)
+                                                    .foregroundColor(.black)
+                                                Circle()
+                                                    .frame(width: 7, height: 7)
+                                            }
+                                            .padding(.leading, 15)
+                                        }
+                                        Text("9º")
+                                    }
+                                    
+                                    
+                                    Divider()
+                                        .background()
+                                    HStack {
+                                        Text("일")
+                                            .frame(width: 30, alignment: .leading)
+                                        Spacer()
+                                        Image(systemName: "moon.fill")
+                                        Spacer()
+                                        Text("0º")
+                                        ZStack(alignment: .leading) {
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .frame(width: screenWidth*0.3, height: 4)
+                                                .foregroundStyle(.black.opacity(0.6))
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .frame(width: screenWidth*0.2, height: 4)
+                                                .foregroundStyle(.blue)
+                                            
+                                            ZStack {
+                                                Circle()
+                                                    .frame(width: 9, height: 9)
+                                                    .foregroundColor(.black)
+                                                Circle()
+                                                    .frame(width: 7, height: 7)
+                                            }
+                                            .padding(.leading, 15)
+                                        }
+                                        Text("9º")
+                                    }
+                                    
+                                    
+                                    Divider()
+                                        .background()
+                                    HStack {
+                                        Text("월")
+                                            .frame(width: 30, alignment: .leading)
+                                        Spacer()
+                                        Image(systemName: "moon.fill")
+                                        Spacer()
+                                        Text("0º")
+                                        ZStack(alignment: .leading) {
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .frame(width: screenWidth*0.3, height: 4)
+                                                .foregroundStyle(.black.opacity(0.6))
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .frame(width: screenWidth*0.2, height: 4)
+                                                .foregroundStyle(.blue)
+                                            
+                                            ZStack {
+                                                Circle()
+                                                    .frame(width: 9, height: 9)
+                                                    .foregroundColor(.black)
+                                                Circle()
+                                                    .frame(width: 7, height: 7)
+                                            }
+                                            .padding(.leading, 15)
+                                        }
+                                        Text("9º")
+                                    }
+                                    
+                                    
+                                    Divider()
+                                        .background()
+                                    HStack {
+                                        Text("화")
+                                            .frame(width: 30, alignment: .leading)
+                                        Spacer()
+                                        Image(systemName: "moon.fill")
+                                        Spacer()
+                                        Text("0º")
+                                        ZStack(alignment: .leading) {
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .frame(width: screenWidth*0.3, height: 4)
+                                                .foregroundStyle(.black.opacity(0.6))
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .frame(width: screenWidth*0.2, height: 4)
+                                                .foregroundStyle(.blue)
+                                            
+                                            ZStack {
+                                                Circle()
+                                                    .frame(width: 9, height: 9)
+                                                    .foregroundColor(.black)
+                                                Circle()
+                                                    .frame(width: 7, height: 7)
+                                            }
+                                            .padding(.leading, 15)
+                                        }
+                                        Text("9º")
+                                    }
+                                    
+                                    
+                                    Divider()
+                                        .background()
+                                    HStack {
+                                        Text("수")
+                                            .frame(width: 30, alignment: .leading)
+                                        Spacer()
+                                        Image(systemName: "moon.fill")
+                                        Spacer()
+                                        Text("0º")
+                                        ZStack(alignment: .leading) {
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .frame(width: screenWidth*0.3, height: 4)
+                                                .foregroundStyle(.black.opacity(0.6))
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .frame(width: screenWidth*0.2, height: 4)
+                                                .foregroundStyle(.blue)
+                                            
+                                            ZStack {
+                                                Circle()
+                                                    .frame(width: 9, height: 9)
+                                                    .foregroundColor(.black)
+                                                Circle()
+                                                    .frame(width: 7, height: 7)
+                                            }
+                                            .padding(.leading, 15)
+                                        }
+                                        Text("9º")
+                                    }
+                                    
+                                    
+                                    Divider()
+                                        .background()
+                                    HStack {
+                                        Text("목")
+                                            .frame(width: 30, alignment: .leading)
+                                        Spacer()
+                                        Image(systemName: "moon.fill")
+                                        Spacer()
+                                        Text("0º")
+                                        ZStack(alignment: .leading) {
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .frame(width: screenWidth*0.3, height: 4)
+                                                .foregroundStyle(.black.opacity(0.6))
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .frame(width: screenWidth*0.2, height: 4)
+                                                .foregroundStyle(.blue)
+                                            
+                                            ZStack {
+                                                Circle()
+                                                    .frame(width: 9, height: 9)
+                                                    .foregroundColor(.black)
+                                                Circle()
+                                                    .frame(width: 7, height: 7)
+                                            }
+                                            .padding(.leading, 15)
+                                        }
+                                        Text("9º")
+                                    }
+                                    
+                                    Divider()
+                                        .background()
+                                    HStack {
+                                        Text("금")
+                                            .frame(width: 30, alignment: .leading)
+                                        Spacer()
+                                        Image(systemName: "moon.fill")
+                                        Spacer()
+                                        Text("0º")
+                                        ZStack(alignment: .leading) {
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .frame(width: screenWidth*0.3, height: 4)
+                                                .foregroundStyle(.black.opacity(0.6))
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .frame(width: screenWidth*0.2, height: 4)
+                                                .foregroundStyle(.blue)
+                                            
+                                            ZStack {
+                                                Circle()
+                                                    .frame(width: 9, height: 9)
+                                                    .foregroundColor(.black)
+                                                Circle()
+                                                    .frame(width: 7, height: 7)
+                                            }
+                                            .padding(.leading, 15)
+                                        }
+                                        Text("9º")
+                                    }
+                                }
+                                .padding()
+                                .foregroundColor(.white)
+                                .background(.gray.opacity(0.5))
+                                .cornerRadius(10)
+                                .padding(.horizontal, 15)
+                                
+                                
+                                VStack(alignment: .leading) {
+                                    HStack {
+                                        Image(systemName: "moonphase.waning.crescent")
+                                        Text("상현망간의 달")
+                                    }
+                                    .font(.system(size: 12))
+                                    .foregroundColor(.white.opacity(0.7))
+                                    
+                                    HStack {
+                                        VStack {
+                                            HStack {
+                                                Text("밝은 면")
+                                                Spacer()
+                                                Text("74%")
+                                                    .foregroundStyle(.white.opacity(0.7))
+                                            }
+                                            Divider()
+                                                .background()
+                                            HStack {
+                                                Text("월몰")
+                                                Spacer()
+                                                Text("04:15")
+                                                    .foregroundStyle(.white.opacity(0.7))
+                                            }
+                                            Divider()
+                                                .background()
+                                            HStack {
+                                                Text("다음 보름달")
+                                                Spacer()
+                                                Text("5일")
+                                                    .foregroundStyle(.white.opacity(0.7))
+                                            }
+                                        }
+                                        Image(systemName: "moon.circle")
+                                            .resizable()
+                                            .frame(width: 100, height: 100)
+                                            .padding()
+                                    }
+                                }
+                                .font(.system(size: 12))
+                                .padding()
+                                .foregroundColor(.white)
+                                .background(.gray.opacity(0.5))
+                                .cornerRadius(10)
+                                .padding(.horizontal, 15)
             }
         }
     }
