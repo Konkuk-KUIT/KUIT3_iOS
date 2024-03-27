@@ -127,16 +127,15 @@ struct ContentView: View {
                     .padding(.horizontal, 15)
                     
                     // NavigationView로 할까 하다가 10일간이라고 정해져있으므로 그냥 출력
-                    VStack {
+                    VStack(alignment: .leading, spacing: 10) {
                         HStack {
                             Image(systemName: "calendar")
                                 .foregroundColor(.gray)
                             Text("10일간의 일기예보")
                                 .foregroundStyle(.gray)
                                 .font(.system(size: 12))
-                            Spacer()
-                        }.padding(.top, 10)
-                            .padding(.leading, 15)
+                        }
+                        .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 0))
                         Divider().background(.white).padding(.horizontal, 15)
                         ForEach(1..<10) { _ in
                             HStack(spacing: 50) {
@@ -146,15 +145,15 @@ struct ContentView: View {
                                     Text("0°")
                                     Image(systemName: "mediastick")
                                         .resizable()
-                                        .frame(width: screenWidth*0.3, height: 10)
+                                        .frame(width: screenWidth*0.3)
                                     Text("10°")
                                 }
                             }
                             .frame(height: 30)
                             .foregroundColor(.white)
+                            .padding(.leading)
                             Divider().background(.white).padding(.horizontal, 15)
                         }
-                        
                     }
                     .background(Color(hex: 0x292844))
                     .cornerRadius(10)
@@ -162,7 +161,7 @@ struct ContentView: View {
                     .padding(.top, 15)
                     
                     // 제목, 카드뷰 2개로 구분
-                    VStack {
+                    VStack(spacing: 0) {
                         // 제목
                         HStack {
                             Image(systemName: "moon.stars.fill")
@@ -170,11 +169,10 @@ struct ContentView: View {
                             Spacer()
                         }
                         .foregroundColor(.gray)
-                        .padding(.horizontal, 15)
-                        .padding(.top, 15)
+                        .padding(EdgeInsets(top: 15, leading: 15, bottom: 0, trailing: 15))
                         
                         // 카드뷰
-                        HStack {
+                        HStack(spacing: 20) {
                             // 글씨
                             VStack(alignment: .leading, spacing: 10) {
                                 // 문단 각 항목
@@ -200,16 +198,14 @@ struct ContentView: View {
                                 }
                             }
                             .foregroundColor(.gray)
-                            .padding(.horizontal, 15)
                             
                             // 그림
                             Image(systemName: "moonphase.new.moon")
                                 .resizable()
                                 .foregroundStyle(Color.gray)
-                                .frame(width: 130, height: 130)
-                                .padding(.trailing,  20)
+                                .frame(width: 100, height: 100)
                         }
-                        .padding(.bottom, 15)
+                        .padding(20)
                     }
                     .font(.system(size: 14))
                     .background(Color(hex: 0x293355))
