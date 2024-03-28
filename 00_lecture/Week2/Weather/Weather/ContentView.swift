@@ -7,8 +7,26 @@
 
 import SwiftUI
 
+struct Weather: Identifiable {
+    var id = UUID()
+    let weekOfDay: String
+    let image: String
+    let minTemperature: String
+    let maxTemperature: String
+}
+
 struct ContentView: View {
     let screenWidth = UIScreen.main.bounds.width
+    
+    private let weatherOf10Days: [Weather] = [
+        Weather(weekOfDay: "오늘", image: "moon.stars.fill", minTemperature: "0", maxTemperature: "9"),
+        Weather(weekOfDay: "목", image: "sun.max.fill", minTemperature: "-1", maxTemperature: "11"),
+        Weather(weekOfDay: "금", image: "cloud.rain.fill", minTemperature: "1", maxTemperature: "17"),
+        Weather(weekOfDay: "토", image: "cloud.fill", minTemperature: "9", maxTemperature: "19"),
+        Weather(weekOfDay: "일", image: "sun.max.fill", minTemperature: "7", maxTemperature: "21"),
+        Weather(weekOfDay: "월", image: "cloud.fill", minTemperature: "8", maxTemperature: "17"),
+        Weather(weekOfDay: "화", image: "cloud.rain.fill", minTemperature: "5", maxTemperature: "13")
+    ]
     
     var body: some View {
         ZStack {
@@ -86,6 +104,46 @@ struct ContentView: View {
                     .cornerRadius(10)
                     .padding(EdgeInsets(top: 25, leading: 15, bottom: 0, trailing: 15))
                     
+                    VStack(alignment: .leading, spacing: 10) {
+                        Label("10일간의 일기예보", systemImage: "calendar")
+                            .font(.system(size: 13))
+                            .foregroundStyle(.white.opacity(0.5))
+                        
+                        ForEach(weatherOf10Days) { weather in
+                            VStack(spacing: 10) {
+                                Divider()
+                                    .background(.white)
+                                HStack {
+                                    Text(weather.weekOfDay)
+                                        .frame(width: 30, alignment: .leading)
+                                    Spacer()
+                                    if weather.image == "sun.max.fill" {
+                                        Image(systemName: weather.image)
+                                            .foregroundStyle(.yellow)
+                                    } else {
+                                        Image(systemName: weather.image)
+                                    }
+                                    Spacer()
+                                    HStack {
+                                        Text("\(weather.minTemperature)°")
+                                            .foregroundStyle(.white.opacity(0.5))
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .frame(width: 80, height: 3)
+                                            .foregroundStyle(.black.opacity(0.2))
+                                        Text("\(weather.maxTemperature)°")
+                                    }
+                                    .frame(width: 150, alignment: .trailing)
+                                }
+                            }
+                        }
+                    }
+                    .foregroundStyle(.white)
+                    .font(.system(size: 15))
+                    .padding()
+                    .background(.gray.opacity(0.5))
+                    .cornerRadius(10)
+                    .padding(.horizontal, 15)
+                    
                     HStack(spacing: 10) {
                         VStack(alignment: .leading, spacing: 25) {
                             HStack {
@@ -124,6 +182,48 @@ struct ContentView: View {
                         .cornerRadius(10)
                     }
                     .foregroundColor(.white)
+                    .padding(.horizontal, 15)
+                    
+                    VStack(alignment: .leading) {
+                        Label("상현망간의 달", systemImage: "moonphase.waxing.gibbous.inverse")
+                            .font(.system(size: 13))
+                            .foregroundStyle(.white.opacity(0.5))
+                        HStack(spacing: 15) {
+                            VStack(spacing: 15) {
+                                HStack {
+                                    Text("밝은 면")
+                                    Spacer()
+                                    Text("74%")
+                                        .foregroundStyle(.white.opacity(0.5))
+                                }
+                                Divider()
+                                    .background(.white)
+                                HStack {
+                                    Text("월몰")
+                                    Spacer()
+                                    Text("04:15")
+                                        .foregroundStyle(.white.opacity(0.5))
+                                }
+                                Divider()
+                                    .background(.white)
+                                HStack {
+                                    Text("다음 보름달")
+                                    Spacer()
+                                    Text("5일")
+                                        .foregroundStyle(.white.opacity(0.5))
+                                }
+                            }
+                            Image(systemName: "moonphase.waxing.gibbous")
+                                .resizable()
+                                .frame(width: 140, height: 140)
+                                .foregroundStyle(.black.opacity(0.5))
+                        }
+                    }
+                    .foregroundStyle(.white)
+                    .font(.system(size: 15))
+                    .padding()
+                    .background(.gray.opacity(0.5))
+                    .cornerRadius(10)
                     .padding(.horizontal, 15)
                 }
             }
