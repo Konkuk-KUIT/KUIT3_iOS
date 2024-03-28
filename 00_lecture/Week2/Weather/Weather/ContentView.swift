@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Weather: Identifiable, Hashable {
+struct Weather: Identifiable {
     var id = UUID()
     let weekOfDay: String
     let image: String
