@@ -7,8 +7,26 @@
 
 import SwiftUI
 
+struct Weather: Identifiable, Hashable {
+    var id = UUID()
+    let weekOfDay: String
+    let image: String
+    let minTemperature: String
+    let maxTemperature: String
+}
+
 struct ContentView: View {
     let screenWidth = UIScreen.main.bounds.width
+    
+    private let weatherOf10Days: [Weather] = [
+        Weather(weekOfDay: "오늘", image: "moon.stars.fill", minTemperature: "0", maxTemperature: "9"),
+        Weather(weekOfDay: "목", image: "sun.max.fill", minTemperature: "-1", maxTemperature: "11"),
+        Weather(weekOfDay: "금", image: "cloud.rain.fill", minTemperature: "1", maxTemperature: "17"),
+        Weather(weekOfDay: "토", image: "cloud.fill", minTemperature: "9", maxTemperature: "19"),
+        Weather(weekOfDay: "일", image: "sun.max.fill", minTemperature: "7", maxTemperature: "21"),
+        Weather(weekOfDay: "월", image: "cloud.fill", minTemperature: "8", maxTemperature: "17"),
+        Weather(weekOfDay: "화", image: "cloud.rain.fill", minTemperature: "5", maxTemperature: "13")
+    ]
     
     var body: some View {
         ZStack {
@@ -90,133 +108,33 @@ struct ContentView: View {
                         Label("10일간의 일기예보", systemImage: "calendar")
                             .font(.system(size: 13))
                             .foregroundStyle(.white.opacity(0.5))
-                        Divider()
-                            .background(.white)
-                        HStack {
-                            Text("오늘")
-                                .frame(width: 30, alignment: .leading)
-                            Spacer()
-                            Image(systemName: "moon.stars.fill")
-                            Spacer()
-                            HStack {
-                                Text("0°")
-                                    .foregroundStyle(.white.opacity(0.5))
-                                RoundedRectangle(cornerRadius: 10)
-                                    .frame(width: 80, height: 3)
-                                    .foregroundStyle(.black.opacity(0.2))
-                                Text("9°")
+                        
+                        ForEach(weatherOf10Days) { weather in
+                            VStack(spacing: 10) {
+                                Divider()
+                                    .background(.white)
+                                HStack {
+                                    Text(weather.weekOfDay)
+                                        .frame(width: 30, alignment: .leading)
+                                    Spacer()
+                                    if weather.image == "sun.max.fill" {
+                                        Image(systemName: weather.image)
+                                            .foregroundStyle(.yellow)
+                                    } else {
+                                        Image(systemName: weather.image)
+                                    }
+                                    Spacer()
+                                    HStack {
+                                        Text("\(weather.minTemperature)°")
+                                            .foregroundStyle(.white.opacity(0.5))
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .frame(width: 80, height: 3)
+                                            .foregroundStyle(.black.opacity(0.2))
+                                        Text("\(weather.maxTemperature)°")
+                                    }
+                                    .frame(width: 150, alignment: .trailing)
+                                }
                             }
-                            .frame(width: 150, alignment: .trailing)
-                        }
-                        Divider()
-                            .background(.white)
-                        HStack {
-                            Text("목")
-                                .frame(width: 30, alignment: .leading)
-                            Spacer()
-                            Image(systemName: "sun.max.fill")
-                                .foregroundStyle(.yellow)
-                            Spacer()
-                            HStack {
-                                Text("-1°")
-                                    .foregroundStyle(.white.opacity(0.5))
-                                RoundedRectangle(cornerRadius: 10)
-                                    .frame(width: 80, height: 3)
-                                    .foregroundStyle(.black.opacity(0.2))
-                                Text("11°")
-                            }
-                            .frame(width: 150, alignment: .trailing)
-                        }
-                        Divider()
-                            .background(.white)
-                        HStack {
-                            Text("금")
-                                .frame(width: 30, alignment: .leading)
-                            Spacer()
-                            Image(systemName: "cloud.rain.fill")
-                            Spacer()
-                            HStack {
-                                Text("1°")
-                                    .foregroundStyle(.white.opacity(0.5))
-                                RoundedRectangle(cornerRadius: 10)
-                                    .frame(width: 80, height: 3)
-                                    .foregroundStyle(.black.opacity(0.2))
-                                Text("17°")
-                            }
-                            .frame(width: 150, alignment: .trailing)
-                        }
-                        Divider()
-                            .background(.white)
-                        HStack {
-                            Text("토")
-                                .frame(width: 30, alignment: .leading)
-                            Spacer()
-                            Image(systemName: "cloud.fill")
-                            Spacer()
-                            HStack {
-                                Text("9°")
-                                    .foregroundStyle(.white.opacity(0.5))
-                                RoundedRectangle(cornerRadius: 10)
-                                    .frame(width: 80, height: 3)
-                                    .foregroundStyle(.black.opacity(0.2))
-                                Text("19°")
-                            }
-                            .frame(width: 150, alignment: .trailing)
-                        }
-                        Divider()
-                            .background(.white)
-                        HStack {
-                            Text("일")
-                                .frame(width: 30, alignment: .leading)
-                            Spacer()
-                            Image(systemName: "sun.max.fill")
-                                .foregroundStyle(.yellow)
-                            Spacer()
-                            HStack {
-                                Text("7°")
-                                    .foregroundStyle(.white.opacity(0.5))
-                                RoundedRectangle(cornerRadius: 10)
-                                    .frame(width: 80, height: 3)
-                                    .foregroundStyle(.black.opacity(0.2))
-                                Text("21°")
-                            }
-                            .frame(width: 150, alignment: .trailing)
-                        }
-                        Divider()
-                            .background(.white)
-                        HStack {
-                            Text("월")
-                                .frame(width: 30, alignment: .leading)
-                            Spacer()
-                            Image(systemName: "cloud.fill")
-                            Spacer()
-                            HStack {
-                                Text("8°")
-                                    .foregroundStyle(.white.opacity(0.5))
-                                RoundedRectangle(cornerRadius: 10)
-                                    .frame(width: 80, height: 3)
-                                    .foregroundStyle(.black.opacity(0.2))
-                                Text("17°")
-                            }
-                            .frame(width: 150, alignment: .trailing)
-                        }
-                        Divider()
-                            .background(.white)
-                        HStack {
-                            Text("화")
-                                .frame(width: 30, alignment: .leading)
-                            Spacer()
-                            Image(systemName: "cloud.rain.fill")
-                            Spacer()
-                            HStack {
-                                Text("5°")
-                                    .foregroundStyle(.white.opacity(0.5))
-                                RoundedRectangle(cornerRadius: 10)
-                                    .frame(width: 80, height: 3)
-                                    .foregroundStyle(.black.opacity(0.2))
-                                Text("13°")
-                            }
-                            .frame(width: 150, alignment: .trailing)
                         }
                     }
                     .foregroundStyle(.white)
