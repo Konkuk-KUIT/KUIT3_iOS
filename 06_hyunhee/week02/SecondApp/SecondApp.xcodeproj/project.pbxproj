@@ -14,6 +14,9 @@
 		4E609E842BB4589500698299 /* SecondAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E609E832BB4589500698299 /* SecondAppTests.swift */; };
 		4E609E8E2BB4589500698299 /* SecondAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E609E8D2BB4589500698299 /* SecondAppUITests.swift */; };
 		4E609E902BB4589500698299 /* SecondAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E609E8F2BB4589500698299 /* SecondAppUITestsLaunchTests.swift */; };
+		4EEB738D2BB5D3C8002C152E /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EEB738C2BB5D3C8002C152E /* Colors.xcassets */; };
+		4EEB73912BB5D973002C152E /* DayWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEB73902BB5D973002C152E /* DayWeatherView.swift */; };
+		4EEB73932BB6854D002C152E /* DayWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEB73922BB6854D002C152E /* DayWeatherData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		4E609E892BB4589500698299 /* SecondAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SecondAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E609E8D2BB4589500698299 /* SecondAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondAppUITests.swift; sourceTree = "<group>"; };
 		4E609E8F2BB4589500698299 /* SecondAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4EEB738C2BB5D3C8002C152E /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		4EEB73902BB5D973002C152E /* DayWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWeatherView.swift; sourceTree = "<group>"; };
+		4EEB73922BB6854D002C152E /* DayWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWeatherData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,9 @@
 			children = (
 				4E609E722BB4589300698299 /* SecondAppApp.swift */,
 				4E609E742BB4589300698299 /* ContentView.swift */,
+				4EEB73922BB6854D002C152E /* DayWeatherData.swift */,
+				4EEB73902BB5D973002C152E /* DayWeatherView.swift */,
+				4EEB738C2BB5D3C8002C152E /* Colors.xcassets */,
 				4E609E762BB4589400698299 /* Assets.xcassets */,
 				4E609E782BB4589400698299 /* Preview Content */,
 			);
@@ -231,6 +240,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EEB738D2BB5D3C8002C152E /* Colors.xcassets in Resources */,
 				4E609E7A2BB4589400698299 /* Preview Assets.xcassets in Resources */,
 				4E609E772BB4589400698299 /* Assets.xcassets in Resources */,
 			);
@@ -258,7 +268,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E609E752BB4589300698299 /* ContentView.swift in Sources */,
+				4EEB73912BB5D973002C152E /* DayWeatherView.swift in Sources */,
 				4E609E732BB4589300698299 /* SecondAppApp.swift in Sources */,
+				4EEB73932BB6854D002C152E /* DayWeatherData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
