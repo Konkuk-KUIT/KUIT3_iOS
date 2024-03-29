@@ -15,6 +15,7 @@ struct ItemInfo: Identifiable, Hashable {
 
 struct ContentView: View {
     @State private var presentNextView: Bool = false
+    @State private var value: String = "value"
     
     let itemList: [ItemInfo] = [
         ItemInfo(name: "left", imageName: "arrow.left"),
@@ -39,11 +40,12 @@ struct ContentView: View {
 //                    NextView()
 //                }
                 
+                Text(value)
                 List(itemList) { item in
                     NavigationLink(item.name, value: item)
                 }
                 .navigationDestination(for: ItemInfo.self) { item in
-                    NextView(itemInfo: item)
+                    NextView(itemInfo: item, value: $value)
                 }
             }
             .navigationTitle("타이틀")
