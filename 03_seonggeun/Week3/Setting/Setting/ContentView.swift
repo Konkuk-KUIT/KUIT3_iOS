@@ -14,9 +14,12 @@ struct Contents: Identifiable {
     let extraInfo: String
 }
 
+
 struct ContentView: View {
     
     @State private var airplanOn: Bool = false
+    
+    let screenWidth = UIScreen.main.bounds.size.width
     
     private var settingInfo = [
         Contents(imageName: "airplane", name: "에어플레인 모드", extraInfo: "toggle"),
@@ -27,38 +30,103 @@ struct ContentView: View {
     ]
     
     var body: some View {
-        NavigationStack {
+        NavigationStack{
             // 이름 구현 -> 안으로 넘어가면 나오는 페이지까지
             // 개인정보 들어가면 -> 해당 페이지 까지
-            List(settingInfo) { setting in
-                NavigationLink {
+            List {
+                Section {
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                        Text("검색")
+                        Spacer()
+                        Image(systemName: "mic.fill")
+                    }
                     
-                } label : {
-                    settingInfoView(setting: setting)
+                }
+                Section {
+                    VStack {
+                        // 사진 + 설명
+                        HStack(spacing: 20){
+                            Image("profile")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: screenWidth * 0.15, height: screenWidth * 0.15)
+                                .clipShape(Circle())
+                            VStack {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text("박성근")
+                                            .font(.system(size: 24))
+                                        Text("Apple ID, iCloud+, 미디어 및 구입 항목")
+                                            .font(.system(size: 12))
+                                    }
+                                }
+                            }
+                            NavigationLink(destination: ProfileSetting()) {
+                                
+                            }
+                            .frame(width: 10, height: 10)
+                        }
+                    }
+                    HStack {
+                        Text("구입에 포함된 서비스")
+                        Spacer()
+                        ZStack {
+                            Image(systemName: "circle.fill")
+                                .foregroundStyle(Color.red)
+                                .font(.system(size: 30))
+                            Text("2")
+                                .foregroundStyle(Color.white)
+                        }
+                        NavigationLink(destination: Text("서비스 뷰")) {
+                            
+                        }
+                        .frame(width: 10, height: 10)
+                    }
+                }
+                
+                Section {
+                    ForEach(settingInfo) { setting in
+                        if setting.extraInfo == "toggle" {
+                            settingInfoView(setting: setting)
+                        } else {
+                            NavigationLink(destination: Text("목적지 뷰")) {
+                                settingInfoView(setting: setting)
+                            }
+                        }
+                    }
                 }
             }
             .navigationTitle("설정")
         }
     }
     
+    
     @ViewBuilder
     func settingInfoView(setting: Contents) -> some View {
-        HStack(spacing: 10) {
+        HStack(spacing: 15) {
             Image(systemName: setting.imageName)
-                .frame(width: 20, height: 20)
+                .frame(width: 25, height: 25)
+                .background(Color.gray)
+                .foregroundStyle(Color.white)
+                .cornerRadius(5)
             Text(setting.name)
             Spacer()
             if setting.extraInfo == "toggle" {
                 Toggle("", isOn: $airplanOn)
+                    .frame(width: 30, height: 10)
+                    .padding(.trailing, 15)
             } else {
                 Text(setting.extraInfo)
                     .foregroundStyle(.gray)
             }
         }
-        .font(.system(size: 18))
+        .font(.system(size: 16))
     }
     
 }
+
+
 
 #Preview {
     ContentView()

@@ -11,6 +11,8 @@
 		8000A84A2BBA60D400BDA455 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A8492BBA60D400BDA455 /* ContentView.swift */; };
 		8000A84C2BBA60D600BDA455 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8000A84B2BBA60D600BDA455 /* Assets.xcassets */; };
 		8000A84F2BBA60D600BDA455 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8000A84E2BBA60D600BDA455 /* Preview Assets.xcassets */; };
+		8000A8562BBAA6F400BDA455 /* ProfileSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A8552BBAA6F400BDA455 /* ProfileSetting.swift */; };
+		8000A8582BBAAB0100BDA455 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A8572BBAAB0100BDA455 /* UserInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		8000A8492BBA60D400BDA455 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8000A84B2BBA60D600BDA455 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8000A84E2BBA60D600BDA455 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8000A8552BBAA6F400BDA455 /* ProfileSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSetting.swift; sourceTree = "<group>"; };
+		8000A8572BBAAB0100BDA455 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,8 @@
 				8000A8492BBA60D400BDA455 /* ContentView.swift */,
 				8000A84B2BBA60D600BDA455 /* Assets.xcassets */,
 				8000A84D2BBA60D600BDA455 /* Preview Content */,
+				8000A8552BBAA6F400BDA455 /* ProfileSetting.swift */,
+				8000A8572BBAAB0100BDA455 /* UserInfoView.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -137,8 +143,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8000A8562BBAA6F400BDA455 /* ProfileSetting.swift in Sources */,
 				8000A84A2BBA60D400BDA455 /* ContentView.swift in Sources */,
 				8000A8482BBA60D400BDA455 /* SettingApp.swift in Sources */,
+				8000A8582BBAAB0100BDA455 /* UserInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
