@@ -27,7 +27,7 @@ struct ProfileView: View {
                     }
                     profileInfoView(profile: profileInfo.last!)
                 }
-                .frame(height: 150)
+                .frame(height: 140)
                 
                 List {
                     NavigationLink {
@@ -35,7 +35,7 @@ struct ProfileView: View {
                         profileInfoView(profile: settingInfo.first!)
                     }
                 }
-                .frame(height: 100)
+                .frame(height: 80)
                 
                 Text("사용자의 데이터가 어떻게 관리되는지 보기...")
                     .padding(.top, 25)

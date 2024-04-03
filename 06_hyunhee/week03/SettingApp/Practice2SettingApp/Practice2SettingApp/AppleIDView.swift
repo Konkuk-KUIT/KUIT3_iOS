@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MyPageView: View {
+struct AppleIDView: View {
     private var userInfo = [
         Contents(imageName: "person.text.rectangle.fill", squareColor: .gray, name:"개인정보", extraInfo: ""),
         Contents(imageName: "lock.shield.fill", squareColor: .gray, name:"로그인 및 보안", extraInfo: ""),
@@ -22,19 +22,7 @@ struct MyPageView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                ZStack {
-                    Circle()
-                        .frame(width: 100, height: 100)
-                        .foregroundStyle(.gray.opacity(0.5))
-                    Text("현희")
-                        .font(.system(size: 46))
-                        .foregroundColor(.white)
-                }
-                Text("이현희")
-                    .font(.system(size: 28))
-                Text("starcraft0529@gmail.com")
-                    .font(.system(size: 14))
-                    .foregroundColor(.gray)
+                GeneralInformationView()
                 List(userInfo) { user in
                     NavigationLink {
                         if user.name == "개인정보" {
@@ -99,6 +87,23 @@ struct MyPageView: View {
     }
 }
 
+struct GeneralInformationView: View {
+    var body: some View {
+        ZStack {
+            Circle()
+                .frame(width: 100, height: 100)
+                .foregroundStyle(.gray.opacity(0.5))
+            Text("현희")
+                .font(.system(size: 46))
+                .foregroundColor(.white)
+        }
+        Text("이현희")
+            .font(.system(size: 28))
+        Text("starcraft0529@gmail.com")
+            .font(.system(size: 14))
+            .foregroundColor(.gray)
+    }
+}
 #Preview {
-    MyPageView()
+    AppleIDView()
 }

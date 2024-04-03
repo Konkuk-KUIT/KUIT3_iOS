@@ -30,64 +30,19 @@ struct ContentView: View {
         GeometryReader{ geometry in
             NavigationStack {
                 VStack {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .frame(width: geometry.size.width-30, height: 40)
-                            .foregroundStyle(.gray)
-                        HStack {
-                            Image(systemName : "magnifyingglass")
-                            Text("검색")
-                            Spacer()
-                            Image(systemName: "mic.fill")
-                        }
-                        .padding(.horizontal, 25)
-                    }
+                    SearchView(width: geometry.size.width)
                     List() {
                         NavigationLink {
-                            MyPageView()
+                            AppleIDView()
                         } label: {
-                            HStack(spacing: 10) {
-                                ZStack {
-                                    Circle()
-                                        .frame(width: 70, height: 70)
-                                        .foregroundStyle(.gray)
-                                    Text("현희")
-                                        .foregroundStyle(.white)
-                                        .font(.system(size: 32))
-                                }
-                                VStack(alignment: .leading) {
-                                    Text("이현희")
-                                        .foregroundStyle(.black)
-                                        .font(.system(size: 20))
-                                    Text("Apple ID, iCloud, 미디어 및 구입 항목")
-                                        .foregroundStyle(.black)
-                                        .font(.system(size: 10))
-                                }
-                            }
-                            .font(.system(size: 10))
+                            ProfilePreviewView()
                         }
                         NavigationLink {
                         } label: {
-                            HStack(spacing: 10) {
-                                Text("Apple ID 제안")
-                                    .foregroundStyle(.black)
-                                    .font(.system(size: 14))
-                                Spacer()
-                                HStack {
-                                    ZStack {
-                                        Circle()
-                                            .frame(width: 30, height: 30)
-                                            .foregroundStyle(.red)
-                                        Text("2")
-                                            .font(.system(size: 18))
-                                            .foregroundStyle(.white)
-                                    }
-                                }
-                            }
-                            .font(.system(size: 10))
+                            AppleIDSuggestionView()
                         }
                     }
-                    .frame(maxHeight: 200)
+                    .frame(maxHeight: 170)
                     List(settingInfo) { setting in
                         if(setting.imageName != "airplane") {
                             NavigationLink {
@@ -99,7 +54,7 @@ struct ContentView: View {
                             settingInfoView(setting: setting)
                         }
                     }
-                    .frame(maxHeight: 300)
+                    .frame(maxHeight: 260)
                     Spacer()
                 }
                 .navigationTitle("설정")
@@ -131,6 +86,72 @@ struct ContentView: View {
                     .foregroundStyle(.gray)
             }
         }
+    }
+}
+
+struct AppleIDSuggestionView: View {
+    var body: some View {
+        HStack(spacing: 10) {
+            Text("Apple ID 제안")
+                .foregroundStyle(.black)
+                .font(.system(size: 14))
+            Spacer()
+            HStack {
+                ZStack {
+                    Circle()
+                        .frame(width: 30, height: 30)
+                        .foregroundStyle(.red)
+                    Text("2")
+                        .font(.system(size: 18))
+                        .foregroundStyle(.white)
+                }
+            }
+        }
+        .font(.system(size: 10))
+    }
+}
+
+struct ProfilePreviewView: View {
+    var body: some View {
+        HStack(spacing: 10) {
+            ZStack {
+                Circle()
+                    .frame(width: 70, height: 70)
+                    .foregroundStyle(.gray)
+                Text("현희")
+                    .foregroundStyle(.white)
+                    .font(.system(size: 32))
+            }
+            VStack(alignment: .leading) {
+                Text("이현희")
+                    .foregroundStyle(.black)
+                    .font(.system(size: 20))
+                Text("Apple ID, iCloud, 미디어 및 구입 항목")
+                    .foregroundStyle(.black)
+                    .font(.system(size: 10))
+            }
+        }
+        .font(.system(size: 10))
+    }
+}
+
+struct SearchView: View {
+    let width: CGFloat
+    
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 10)
+                .frame(width: width-40, height: 40)
+                .foregroundStyle(.gray.opacity(0.15))
+            HStack {
+                Image(systemName : "magnifyingglass")
+                Text("검색")
+                Spacer()
+                Image(systemName: "mic.fill")
+            }
+            .padding(.horizontal, 30)
+        }
+        .padding(.top, 10)
     }
 }
 
