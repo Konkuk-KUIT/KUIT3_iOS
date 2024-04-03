@@ -7,17 +7,10 @@
 
 import SwiftUI
 
-struct Contents: Identifiable {
-    var id: String { name }
-    let imageName: String
-    let name: String
-    let extraInfo: String
-}
-
-
 struct ContentView: View {
     
     @State private var airplanOn: Bool = false
+    @State private var profileName: String = "박성근"
     
     let screenWidth = UIScreen.main.bounds.size.width
     
@@ -28,6 +21,8 @@ struct ContentView: View {
         Contents(imageName: "cellularbars", name: "셀룰러", extraInfo: ""),
         Contents(imageName: "personalhotspot", name: "개인용 핫스팟", extraInfo: ""),
     ]
+    
+    
     
     var body: some View {
         NavigationStack{
@@ -44,29 +39,24 @@ struct ContentView: View {
                     
                 }
                 Section {
-                    VStack {
-                        // 사진 + 설명
-                        HStack(spacing: 20){
-                            Image("profile")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: screenWidth * 0.15, height: screenWidth * 0.15)
-                                .clipShape(Circle())
-                            VStack {
-                                HStack {
-                                    VStack(alignment: .leading) {
-                                        Text("박성근")
-                                            .font(.system(size: 24))
-                                        Text("Apple ID, iCloud+, 미디어 및 구입 항목")
-                                            .font(.system(size: 12))
-                                    }
-                                }
-                            }
-                            NavigationLink(destination: ProfileSetting()) {
-                                
-                            }
-                            .frame(width: 10, height: 10)
+                    // 사진 + 설명
+                    HStack(spacing: 20){
+                        Image("profile")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: screenWidth * 0.15, height: screenWidth * 0.15)
+                            .clipShape(Circle())
+                        VStack(alignment: .leading) {
+                            Text("박성근")
+                                .font(.system(size: 24))
+                            Text("Apple ID, iCloud+, 미디어 및 구입 항목")
+                                .font(.system(size: 12))
                         }
+                        NavigationLink(
+                            destination: ProfileSetting(name: $profileName)) {
+                            
+                        }
+                        .frame(width: 10, height: 10)
                     }
                     HStack {
                         Text("구입에 포함된 서비스")

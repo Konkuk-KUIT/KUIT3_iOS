@@ -7,12 +7,6 @@
 
 import SwiftUI
 
-struct UserInfo: Identifiable {
-    var id: String { name }
-    let name: String
-    let extraInfo: String
-}
-
 struct UserInfoView: View {
     
     let screenWidth = UIScreen.main.bounds.size.width
@@ -20,9 +14,9 @@ struct UserInfoView: View {
     @State private var showModal = false
     
     private var userInfo = [
-        UserInfo(name: "박성근", extraInfo: "박성근"),
-        UserInfo(name: "생년월일", extraInfo: "2000.08.01"),
-        UserInfo(name: "커뮤니케이션 환경설정", extraInfo: "")
+        Contents(imageName: "", name: "박성근", extraInfo: "박성근"),
+        Contents(imageName: "", name: "생년월일", extraInfo: "2000.08.01"),
+        Contents(imageName: "", name: "커뮤니케이션 환경설정", extraInfo: "")
     ]
     
     var body: some View {
@@ -30,15 +24,15 @@ struct UserInfoView: View {
             List {
                 Section {
                     NavigationLink(destination: Text("빈 페이지")) {
-                        settingInfoView(setting: userInfo[0])
+                        SettingInfoView(setting: userInfo[0])
                     }
                     
-                    settingInfoView(setting: userInfo[1])
+                    SettingInfoView(setting: userInfo[1])
                 }
                 
                 Section {
                     NavigationLink(destination: Text("빈 페이지")) {
-                        settingInfoView(setting: userInfo[2])
+                        SettingInfoView(setting: userInfo[2])
                     }
                 }
                 
@@ -65,17 +59,6 @@ struct UserInfoView: View {
             .navigationTitle("개인 정보")
             .navigationBarTitleDisplayMode(.inline)
         }
-    }
-    
-    @ViewBuilder
-    func settingInfoView(setting: UserInfo) -> some View {
-        HStack(spacing: 15) {
-            Text(setting.name)
-            Spacer()
-            Text(setting.extraInfo)
-                .foregroundStyle(.gray)
-        }
-        .font(.system(size: 16))
     }
 }
 
