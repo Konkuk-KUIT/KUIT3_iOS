@@ -40,39 +40,38 @@ struct ContentView: View {
                 }
                 Section {
                     // 사진 + 설명
-                    HStack(spacing: 20){
-                        Image("profile")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: screenWidth * 0.15, height: screenWidth * 0.15)
-                            .clipShape(Circle())
-                        VStack(alignment: .leading) {
-                            Text("박성근")
-                                .font(.system(size: 24))
-                            Text("Apple ID, iCloud+, 미디어 및 구입 항목")
-                                .font(.system(size: 12))
-                        }
-                        NavigationLink(
-                            destination: ProfileSetting(name: $profileName)) {
+                    NavigationLink(
+                        destination: ProfileSetting(name: $profileName)) {
+                            HStack(spacing: 20){
+                                Image("profile")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: screenWidth * 0.15, height: screenWidth * 0.15)
+                                    .clipShape(Circle())
+                                VStack(alignment: .leading) {
+                                    Text("박성근")
+                                        .font(.system(size: 24))
+                                    Text("Apple ID, iCloud+, 미디어 및 구입 항목")
+                                        .font(.system(size: 12))
+                                }
+                            }
+                    }
+                    
+                    NavigationLink(destination: Text("서비스 뷰")) {
+                        HStack {
+                            Text("구입에 포함된 서비스")
+                            Spacer()
+                            ZStack {
+                                Image(systemName: "circle.fill")
+                                    .foregroundStyle(Color.red)
+                                    .font(.system(size: 30))
+                                Text("2")
+                                    .foregroundStyle(Color.white)
+                            }
                             
                         }
-                        .frame(width: 10, height: 10)
                     }
-                    HStack {
-                        Text("구입에 포함된 서비스")
-                        Spacer()
-                        ZStack {
-                            Image(systemName: "circle.fill")
-                                .foregroundStyle(Color.red)
-                                .font(.system(size: 30))
-                            Text("2")
-                                .foregroundStyle(Color.white)
-                        }
-                        NavigationLink(destination: Text("서비스 뷰")) {
-                            
-                        }
-                        .frame(width: 10, height: 10)
-                    }
+                    
                 }
                 
                 Section {
