@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct AppleIDView: View {
+    @Binding var airPlaneOn: Bool
     @Binding var firstName: String
     @Binding var lastName: String
     
     private let userInfo = [
-        Contents(imageName: "person.text.rectangle.fill", squareColor: .gray, name:"개인정보", extraInfo: ""),
-        Contents(imageName: "lock.shield.fill", squareColor: .gray, name:"로그인 및 보안", extraInfo: ""),
-        Contents(imageName: "creditcard.fill", squareColor: .gray, name:"결제 및 배송", extraInfo: ""),
+        Contents(imageName: "person.text.rectangle.fill", isSqureExist: true, squareColor: .gray, name:"개인정보", extraInfo: ""),
+        Contents(imageName: "lock.shield.fill", isSqureExist: true, squareColor: .gray, name:"로그인 및 보안", extraInfo: ""),
+        Contents(imageName: "creditcard.fill", isSqureExist: true, squareColor: .gray, name:"결제 및 배송", extraInfo: ""),
     ]
     
     private let cloudInfo = [
-        Contents(imageName: "icloud.fill", squareColor: .gray, name:"iCloud", extraInfo: "5GB"),
-        Contents(imageName: "person.2.fill", squareColor: .gray, name:"가족공유", extraInfo: "설정")
+        Contents(imageName: "icloud.fill", isSqureExist: false, squareColor: .gray, name:"iCloud", extraInfo: "5GB"),
+        Contents(imageName: "person.2.fill", isSqureExist: false, squareColor: .gray, name:"가족공유", extraInfo: "설정")
     ]
     
     var body: some View {
@@ -31,10 +32,10 @@ struct AppleIDView: View {
                         ForEach(userInfo) { user in
                             NavigationLink {
                                 if user.name == "개인정보" {
-                                    ProfileView(firstName: $firstName, lastName: $lastName)
+                                    ProfileView(airPlaneOn: $airPlaneOn, firstName: $firstName, lastName: $lastName)
                                 }
                             } label : {
-                                userInfoView(user: user)
+                                ContentsView(contentsInfo: user, airPlaneOn: $airPlaneOn)
                             }
                         }
                     }
@@ -42,7 +43,7 @@ struct AppleIDView: View {
                         ForEach(cloudInfo) { cloud in
                             NavigationLink {
                             } label : {
-                                cloudInfoView(cloud: cloud)
+                                ContentsView(contentsInfo: cloud, airPlaneOn: $airPlaneOn)
                             }
                         }
                     }
@@ -51,43 +52,6 @@ struct AppleIDView: View {
             .background(Color(.systemGray6))
             .navigationTitle("Apple ID")
             .navigationBarTitleDisplayMode(.inline)
-        }
-    }
-    
-    @ViewBuilder
-    func userInfoView(user: Contents) -> some View {
-        HStack(spacing: 10) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 5)
-                    .frame(width: 30, height: 30)
-                    .foregroundStyle(user.squareColor)
-                Image(systemName: user.imageName)
-                    .frame(width: 30, height: 30)
-                    .font(.system(size: 17))
-                    .foregroundStyle(.white)
-            }
-            Text(user.name)
-                .font(.system(size: 16))
-            Spacer()
-            Text(user.extraInfo)
-                .foregroundStyle(.gray)
-        }
-    }
-    
-    @ViewBuilder
-    func cloudInfoView(cloud: Contents) -> some View {
-        HStack(spacing: 10) {
-            ZStack {
-                Image(systemName: cloud.imageName)
-                    .frame(width: 30, height: 30)
-                    .font(.system(size: 17))
-                    .foregroundStyle(.blue)
-            }
-            Text(cloud.name)
-                .font(.system(size: 16))
-            Spacer()
-            Text(cloud.extraInfo)
-                .foregroundStyle(.gray)
         }
     }
 }

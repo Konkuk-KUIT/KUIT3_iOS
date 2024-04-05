@@ -7,13 +7,7 @@
 
 import SwiftUI
 
-struct Contents: Identifiable {
-    var id: String { name }
-    let imageName: String
-    let squareColor: Color
-    let name: String
-    let extraInfo: String
-}
+
 
 struct ContentView: View {
     @State private var airPlaneOn = false
@@ -21,11 +15,11 @@ struct ContentView: View {
     @State private var lastName = "현희"
     
     private var settingInfo = [
-        Contents(imageName: "airplane", squareColor: .orange, name:"에어플레인 모드", extraInfo: "toggle"),
-        Contents(imageName: "wifi", squareColor: .blue, name:"Wi-fi", extraInfo: "iptime"),
-        Contents(imageName: "b.square.fill", squareColor: .blue, name:"Bluetooth", extraInfo: "켬"),
-        Contents(imageName: "antenna.radiowaves.left.and.right", squareColor: .green, name:"셀룰러", extraInfo: ""),
-        Contents(imageName: "personalhotspot", squareColor: .green, name:"개인용 핫스팟", extraInfo: ""),
+        Contents(imageName: "airplane", isSqureExist: true, squareColor: .orange, name:"에어플레인 모드", extraInfo: "toggle"),
+        Contents(imageName: "wifi", isSqureExist: true, squareColor: .blue, name:"Wi-fi", extraInfo: "iptime"),
+        Contents(imageName: "b.square.fill", isSqureExist: true, squareColor: .blue, name:"Bluetooth", extraInfo: "켬"),
+        Contents(imageName: "antenna.radiowaves.left.and.right", isSqureExist: true, squareColor: .green, name:"셀룰러", extraInfo: ""),
+        Contents(imageName: "personalhotspot", isSqureExist: true, squareColor: .green, name:"개인용 핫스팟", extraInfo: ""),
     ]
     
     var body: some View {
@@ -35,7 +29,7 @@ struct ContentView: View {
                 List {
                     Section() {
                         NavigationLink {
-                            AppleIDView(firstName: $firstName, lastName: $lastName)
+                            AppleIDView(airPlaneOn: $airPlaneOn, firstName: $firstName, lastName: $lastName)
                         } label: {
                             ProfilePreviewView(firstName: $firstName, lastName: $lastName)
                         }
@@ -46,14 +40,14 @@ struct ContentView: View {
                     }
                     Section() {
                         ForEach(settingInfo){ setting in
-                            if(setting.imageName != "airplane") {
-                                NavigationLink {
-                                    
-                                } label: {
-                                    settingInfoView(setting: setting)
-                                }
+                            if setting.isSqureExist == true {
+                                ContentsView(contentsInfo: setting, airPlaneOn: $airPlaneOn)
                             } else {
-                                settingInfoView(setting: setting)
+                                NavigationLink {
+                                } label: {
+                                    ContentsView(contentsInfo: setting, airPlaneOn: $airPlaneOn)
+                                }
+                                
                             }
                         }
                     }
@@ -61,30 +55,6 @@ struct ContentView: View {
             }
             .navigationTitle("설정")
             .background(Color(.systemGray6))
-        }
-    }
-    
-    @ViewBuilder
-    func settingInfoView(setting: Contents) -> some View {
-        HStack(spacing: 10) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 5)
-                    .frame(width: 30, height: 30)
-                    .foregroundStyle(setting.squareColor)
-                Image(systemName: setting.imageName)
-                    .frame(width: 30, height: 30)
-                    .font(.system(size: 17))
-                    .foregroundStyle(.white)
-            }
-            Text(setting.name)
-                .font(.system(size: 16))
-            Spacer()
-            if setting.extraInfo == "toggle" {
-                Toggle("", isOn: $airPlaneOn)
-            } else {
-                Text(setting.extraInfo)
-                    .foregroundStyle(.gray)
-            }
         }
     }
 }

@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @Binding var airPlaneOn: Bool
     @Binding var firstName: String
     @Binding var lastName: String
     
     private let profileInfo = [
-        Contents(imageName: "", squareColor: .gray, name:"이름", extraInfo: ""),
-        Contents(imageName: "", squareColor: .gray, name:"생년월일 변경", extraInfo: "")
+        Contents(imageName: "", isSqureExist: true, squareColor: .gray, name:"이름", extraInfo: ""),
+        Contents(imageName: "", isSqureExist: true, squareColor: .gray, name:"생년월일 변경", extraInfo: "")
     ]
     
     private let settingInfo = [
-        Contents(imageName: "", squareColor: .gray, name:"커뮤니케이션 환경설정", extraInfo: "")
+        Contents(imageName: "", isSqureExist: true, squareColor: .gray, name:"커뮤니케이션 환경설정", extraInfo: "")
     ]
     
     var body: some View {

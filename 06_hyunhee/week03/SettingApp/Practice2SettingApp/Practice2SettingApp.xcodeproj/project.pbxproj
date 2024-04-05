@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E02F7082BC0714900555729 /* ContentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F7072BC0714900555729 /* ContentsView.swift */; };
 		4E4142FA2BBC810900B854A1 /* AppleIDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4142F92BBC810900B854A1 /* AppleIDView.swift */; };
 		4E4142FC2BBC84C700B854A1 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4142FB2BBC84C700B854A1 /* ProfileView.swift */; };
 		4EC64D7E2BBC56730062FA53 /* Practice2SettingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC64D7D2BBC56730062FA53 /* Practice2SettingAppApp.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E02F7072BC0714900555729 /* ContentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsView.swift; sourceTree = "<group>"; };
 		4E4142F92BBC810900B854A1 /* AppleIDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleIDView.swift; sourceTree = "<group>"; };
 		4E4142FB2BBC84C700B854A1 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		4EC64D7A2BBC56730062FA53 /* Practice2SettingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Practice2SettingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +106,7 @@
 				4E4142FB2BBC84C700B854A1 /* ProfileView.swift */,
 				4EC64D812BBC56740062FA53 /* Assets.xcassets */,
 				4EC64D832BBC56740062FA53 /* Preview Content */,
+				4E02F7072BC0714900555729 /* ContentsView.swift */,
 			);
 			path = Practice2SettingApp;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			files = (
 				4E4142FC2BBC84C700B854A1 /* ProfileView.swift in Sources */,
 				4EC64D802BBC56730062FA53 /* ContentView.swift in Sources */,
+				4E02F7082BC0714900555729 /* ContentsView.swift in Sources */,
 				4EC64D7E2BBC56730062FA53 /* Practice2SettingAppApp.swift in Sources */,
 				4E4142FA2BBC810900B854A1 /* AppleIDView.swift in Sources */,
 			);
