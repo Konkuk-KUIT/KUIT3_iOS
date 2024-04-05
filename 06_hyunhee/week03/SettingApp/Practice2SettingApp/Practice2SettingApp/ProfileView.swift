@@ -8,44 +8,49 @@
 import SwiftUI
 
 struct ProfileView: View {
-    private var profileInfo = [
-        Contents(imageName: "", squareColor: .gray, name:"이름", extraInfo: "이현희"),
+    @Binding var firstName: String
+    @Binding var lastName: String
+    
+    private let profileInfo = [
+        Contents(imageName: "", squareColor: .gray, name:"이름", extraInfo: ""),
         Contents(imageName: "", squareColor: .gray, name:"생년월일 변경", extraInfo: "")
     ]
     
-    private var settingInfo = [
+    private let settingInfo = [
         Contents(imageName: "", squareColor: .gray, name:"커뮤니케이션 환경설정", extraInfo: "")
     ]
     
     var body: some View {
         NavigationStack {
             VStack {
-                List {
-                    NavigationLink {
-                    } label : {
-                        profileInfoView(profile: profileInfo.first!)
+                List() {
+                    Section() {
+                        NavigationLink {
+                        } label : {
+                            profileInfoView(profile: profileInfo.first!)
+                        }
+                        profileInfoView(profile: profileInfo.last!)
                     }
-                    profileInfoView(profile: profileInfo.last!)
+                    Section() {
+                        NavigationLink {
+                        } label : {
+                            profileInfoView(profile: settingInfo.first!)
+                        }
+                    }
                 }
-                .frame(height: 140)
+                .frame(height: 220)
                 
-                List {
-                    NavigationLink {
-                    } label : {
-                        profileInfoView(profile: settingInfo.first!)
-                    }
-                }
-                .frame(height: 80)
                 
                 Text("사용자의 데이터가 어떻게 관리되는지 보기...")
-                    .padding(.top, 25)
                     .foregroundStyle(.blue)
+                
                 Spacer()
             }
-            .background(.gray.opacity(0.12))
+            .background(Color(.systemGray6))
             .navigationTitle("개인 정보")
             .navigationBarTitleDisplayMode(.inline)
         }
+        .background(Color(.systemGray6))
     }
     
     @ViewBuilder
@@ -63,9 +68,10 @@ struct ProfileView: View {
             Text(profile.extraInfo)
                 .foregroundStyle(.gray)
         }
+        .fixedSize()
     }
 }
 
-#Preview {
-    ProfileView()
-}
+//#Preview {
+//    ProfileView()
+//}

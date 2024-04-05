@@ -17,6 +17,8 @@ struct Contents: Identifiable {
 
 struct ContentView: View {
     @State private var airPlaneOn = false
+    @State private var firstName = "이"
+    @State private var lastName = "현희"
     
     private var settingInfo = [
         Contents(imageName: "airplane", squareColor: .orange, name:"에어플레인 모드", extraInfo: "toggle"),
@@ -27,40 +29,38 @@ struct ContentView: View {
     ]
     
     var body: some View {
-        GeometryReader{ geometry in
-            NavigationStack {
-                VStack {
-                    SearchView(width: geometry.size.width)
-                    List() {
+        NavigationStack {
+            VStack {
+                SearchView()
+                List {
+                    Section() {
                         NavigationLink {
-                            AppleIDView()
+                            AppleIDView(firstName: $firstName, lastName: $lastName)
                         } label: {
-                            ProfilePreviewView()
+                            ProfilePreviewView(firstName: $firstName, lastName: $lastName)
                         }
                         NavigationLink {
                         } label: {
                             AppleIDSuggestionView()
                         }
                     }
-                    .frame(maxHeight: 170)
-                    List(settingInfo) { setting in
-                        if(setting.imageName != "airplane") {
-                            NavigationLink {
-                                
-                            } label: {
+                    Section() {
+                        ForEach(settingInfo){ setting in
+                            if(setting.imageName != "airplane") {
+                                NavigationLink {
+                                    
+                                } label: {
+                                    settingInfoView(setting: setting)
+                                }
+                            } else {
                                 settingInfoView(setting: setting)
                             }
-                        } else {
-                            settingInfoView(setting: setting)
                         }
                     }
-                    .frame(maxHeight: 260)
-                    Spacer()
                 }
-                .navigationTitle("설정")
-                .background(.gray.opacity(0.12))
-                
             }
+            .navigationTitle("설정")
+            .background(Color(.systemGray6))
         }
     }
     
@@ -97,14 +97,14 @@ struct AppleIDSuggestionView: View {
                 .font(.system(size: 14))
             Spacer()
             HStack {
-                ZStack {
-                    Circle()
-                        .frame(width: 30, height: 30)
-                        .foregroundStyle(.red)
-                    Text("2")
-                        .font(.system(size: 18))
-                        .foregroundStyle(.white)
-                }
+                Circle()
+                    .frame(width: 30, height: 30)
+                    .foregroundStyle(.red)
+                    .overlay(
+                        Text("2")
+                            .font(.system(size: 18))
+                            .foregroundStyle(.white)
+                    )
             }
         }
         .font(.system(size: 10))
@@ -112,46 +112,47 @@ struct AppleIDSuggestionView: View {
 }
 
 struct ProfilePreviewView: View {
+    @Binding var firstName: String
+    @Binding var lastName: String
+    
     var body: some View {
         HStack(spacing: 10) {
-            ZStack {
-                Circle()
-                    .frame(width: 70, height: 70)
-                    .foregroundStyle(.gray)
-                Text("현희")
-                    .foregroundStyle(.white)
-                    .font(.system(size: 32))
-            }
+            Circle()
+                .frame(width: 70, height: 70)
+                .foregroundStyle(.gray)
+                .overlay(
+                    Text(lastName)
+                        .foregroundStyle(.white)
+                        .font(.system(size: 32))
+                )
             VStack(alignment: .leading) {
-                Text("이현희")
-                    .foregroundStyle(.black)
+                Text(firstName + lastName)
                     .font(.system(size: 20))
                 Text("Apple ID, iCloud, 미디어 및 구입 항목")
-                    .foregroundStyle(.black)
                     .font(.system(size: 10))
             }
+            .foregroundStyle(.black)
         }
-        .font(.system(size: 10))
     }
 }
 
 struct SearchView: View {
-    let width: CGFloat
+    @State private var searchText = ""
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 10)
-                .frame(width: width-40, height: 40)
-                .foregroundStyle(.gray.opacity(0.15))
-            HStack {
-                Image(systemName : "magnifyingglass")
-                Text("검색")
-                Spacer()
-                Image(systemName: "mic.fill")
-            }
-            .padding(.horizontal, 30)
+        HStack {
+            Image(systemName : "magnifyingglass")
+                .padding(.leading, 10)
+            TextField("검색..", text : $searchText)
+            Spacer()
+            Image(systemName: "mic.fill")
+                .padding(.trailing, 10)
         }
+        .frame(height: 40)
+        .background(.white)
+        .clipShape(RoundedRectangle(cornerRadius:5))
         .padding(.top, 10)
+        .padding(.horizontal, 20)
     }
 }
 

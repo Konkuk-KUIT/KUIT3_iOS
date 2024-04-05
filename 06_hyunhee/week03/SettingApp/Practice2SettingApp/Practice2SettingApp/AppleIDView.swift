@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct AppleIDView: View {
-    private var userInfo = [
+    @Binding var firstName: String
+    @Binding var lastName: String
+    
+    private let userInfo = [
         Contents(imageName: "person.text.rectangle.fill", squareColor: .gray, name:"개인정보", extraInfo: ""),
         Contents(imageName: "lock.shield.fill", squareColor: .gray, name:"로그인 및 보안", extraInfo: ""),
         Contents(imageName: "creditcard.fill", squareColor: .gray, name:"결제 및 배송", extraInfo: ""),
     ]
     
-    private var cloudInfo = [
+    private let cloudInfo = [
         Contents(imageName: "icloud.fill", squareColor: .gray, name:"iCloud", extraInfo: "5GB"),
         Contents(imageName: "person.2.fill", squareColor: .gray, name:"가족공유", extraInfo: "설정")
     ]
@@ -22,28 +25,30 @@ struct AppleIDView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                GeneralInformationView()
-                List(userInfo) { user in
-                    NavigationLink {
-                        if user.name == "개인정보" {
-                            ProfileView()
+                GeneralInformationView(firstName: $firstName, lastName: $lastName)
+                List() {
+                    Section() {
+                        ForEach(userInfo) { user in
+                            NavigationLink {
+                                if user.name == "개인정보" {
+                                    ProfileView(firstName: $firstName, lastName: $lastName)
+                                }
+                            } label : {
+                                userInfoView(user: user)
+                            }
                         }
-                    } label : {
-                        userInfoView(user: user)
+                    }
+                    Section() {
+                        ForEach(cloudInfo) { cloud in
+                            NavigationLink {
+                            } label : {
+                                cloudInfoView(cloud: cloud)
+                            }
+                        }
                     }
                 }
-                .frame(height: 200)
-                List(cloudInfo) { cloud in
-                    NavigationLink {
-                        
-                    } label : {
-                        cloudInfoView(cloud: cloud)
-                    }
-                }
-                .frame(height: 150)
-                Spacer()
             }
-            .background(.gray.opacity(0.12))
+            .background(Color(.systemGray6))
             .navigationTitle("Apple ID")
             .navigationBarTitleDisplayMode(.inline)
         }
@@ -88,6 +93,9 @@ struct AppleIDView: View {
 }
 
 struct GeneralInformationView: View {
+    @Binding var firstName: String
+    @Binding var lastName: String
+    
     var body: some View {
         ZStack {
             Circle()
@@ -97,13 +105,13 @@ struct GeneralInformationView: View {
                 .font(.system(size: 46))
                 .foregroundColor(.white)
         }
-        Text("이현희")
+        Text(firstName+lastName)
             .font(.system(size: 28))
         Text("starcraft0529@gmail.com")
             .font(.system(size: 14))
-            .foregroundColor(.gray)
+            .tint(.gray)
     }
 }
-#Preview {
-    AppleIDView()
-}
+//#Preview {
+//    AppleIDView()
+//}
