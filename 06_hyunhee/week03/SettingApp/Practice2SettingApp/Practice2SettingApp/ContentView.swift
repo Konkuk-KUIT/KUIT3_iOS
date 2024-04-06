@@ -7,84 +7,54 @@
 
 import SwiftUI
 
-struct Contents: Identifiable {
-    var id: String { name }
-    let imageName: String
-    let squareColor: Color
-    let name: String
-    let extraInfo: String
-}
+
 
 struct ContentView: View {
     @State private var airPlaneOn = false
+    @State private var firstName = "이"
+    @State private var lastName = "현희"
     
     private var settingInfo = [
-        Contents(imageName: "airplane", squareColor: .orange, name:"에어플레인 모드", extraInfo: "toggle"),
-        Contents(imageName: "wifi", squareColor: .blue, name:"Wi-fi", extraInfo: "iptime"),
-        Contents(imageName: "b.square.fill", squareColor: .blue, name:"Bluetooth", extraInfo: "켬"),
-        Contents(imageName: "antenna.radiowaves.left.and.right", squareColor: .green, name:"셀룰러", extraInfo: ""),
-        Contents(imageName: "personalhotspot", squareColor: .green, name:"개인용 핫스팟", extraInfo: ""),
+        Contents(imageName: "airplane", isSqureExist: true, squareColor: .orange, name:"에어플레인 모드", extraInfo: "toggle"),
+        Contents(imageName: "wifi", isSqureExist: true, squareColor: .blue, name:"Wi-fi", extraInfo: "iptime"),
+        Contents(imageName: "b.square.fill", isSqureExist: true, squareColor: .blue, name:"Bluetooth", extraInfo: "켬"),
+        Contents(imageName: "antenna.radiowaves.left.and.right", isSqureExist: true, squareColor: .green, name:"셀룰러", extraInfo: ""),
+        Contents(imageName: "personalhotspot", isSqureExist: true, squareColor: .green, name:"개인용 핫스팟", extraInfo: ""),
     ]
     
     var body: some View {
-        GeometryReader{ geometry in
-            NavigationStack {
-                VStack {
-                    SearchView(width: geometry.size.width)
-                    List() {
+        NavigationStack {
+            VStack {
+                SearchView()
+                List {
+                    Section() {
                         NavigationLink {
-                            AppleIDView()
+                            AppleIDView(airPlaneOn: $airPlaneOn, firstName: $firstName, lastName: $lastName)
                         } label: {
-                            ProfilePreviewView()
+                            ProfilePreviewView(firstName: $firstName, lastName: $lastName)
                         }
                         NavigationLink {
                         } label: {
                             AppleIDSuggestionView()
                         }
                     }
-                    .frame(maxHeight: 170)
-                    List(settingInfo) { setting in
-                        if(setting.imageName != "airplane") {
-                            NavigationLink {
+                    Section() {
+                        ForEach(settingInfo){ setting in
+                            if setting.isSqureExist == true {
+                                ContentsView(contentsInfo: setting, airPlaneOn: $airPlaneOn)
+                            } else {
+                                NavigationLink {
+                                } label: {
+                                    ContentsView(contentsInfo: setting, airPlaneOn: $airPlaneOn)
+                                }
                                 
-                            } label: {
-                                settingInfoView(setting: setting)
                             }
-                        } else {
-                            settingInfoView(setting: setting)
                         }
                     }
-                    .frame(maxHeight: 260)
-                    Spacer()
                 }
-                .navigationTitle("설정")
-                .background(.gray.opacity(0.12))
-                
             }
-        }
-    }
-    
-    @ViewBuilder
-    func settingInfoView(setting: Contents) -> some View {
-        HStack(spacing: 10) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 5)
-                    .frame(width: 30, height: 30)
-                    .foregroundStyle(setting.squareColor)
-                Image(systemName: setting.imageName)
-                    .frame(width: 30, height: 30)
-                    .font(.system(size: 17))
-                    .foregroundStyle(.white)
-            }
-            Text(setting.name)
-                .font(.system(size: 16))
-            Spacer()
-            if setting.extraInfo == "toggle" {
-                Toggle("", isOn: $airPlaneOn)
-            } else {
-                Text(setting.extraInfo)
-                    .foregroundStyle(.gray)
-            }
+            .navigationTitle("설정")
+            .background(Color(.systemGray6))
         }
     }
 }
@@ -97,14 +67,14 @@ struct AppleIDSuggestionView: View {
                 .font(.system(size: 14))
             Spacer()
             HStack {
-                ZStack {
-                    Circle()
-                        .frame(width: 30, height: 30)
-                        .foregroundStyle(.red)
-                    Text("2")
-                        .font(.system(size: 18))
-                        .foregroundStyle(.white)
-                }
+                Circle()
+                    .frame(width: 30, height: 30)
+                    .foregroundStyle(.red)
+                    .overlay(
+                        Text("2")
+                            .font(.system(size: 18))
+                            .foregroundStyle(.white)
+                    )
             }
         }
         .font(.system(size: 10))
@@ -112,46 +82,47 @@ struct AppleIDSuggestionView: View {
 }
 
 struct ProfilePreviewView: View {
+    @Binding var firstName: String
+    @Binding var lastName: String
+    
     var body: some View {
         HStack(spacing: 10) {
-            ZStack {
-                Circle()
-                    .frame(width: 70, height: 70)
-                    .foregroundStyle(.gray)
-                Text("현희")
-                    .foregroundStyle(.white)
-                    .font(.system(size: 32))
-            }
+            Circle()
+                .frame(width: 70, height: 70)
+                .foregroundStyle(.gray)
+                .overlay(
+                    Text(lastName)
+                        .foregroundStyle(.white)
+                        .font(.system(size: 32))
+                )
             VStack(alignment: .leading) {
-                Text("이현희")
-                    .foregroundStyle(.black)
+                Text(firstName + lastName)
                     .font(.system(size: 20))
                 Text("Apple ID, iCloud, 미디어 및 구입 항목")
-                    .foregroundStyle(.black)
                     .font(.system(size: 10))
             }
+            .foregroundStyle(.black)
         }
-        .font(.system(size: 10))
     }
 }
 
 struct SearchView: View {
-    let width: CGFloat
+    @State private var searchText = ""
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 10)
-                .frame(width: width-40, height: 40)
-                .foregroundStyle(.gray.opacity(0.15))
-            HStack {
-                Image(systemName : "magnifyingglass")
-                Text("검색")
-                Spacer()
-                Image(systemName: "mic.fill")
-            }
-            .padding(.horizontal, 30)
+        HStack {
+            Image(systemName : "magnifyingglass")
+                .padding(.leading, 10)
+            TextField("검색..", text : $searchText)
+            Spacer()
+            Image(systemName: "mic.fill")
+                .padding(.trailing, 10)
         }
+        .frame(height: 40)
+        .background(.white)
+        .clipShape(RoundedRectangle(cornerRadius:5))
         .padding(.top, 10)
+        .padding(.horizontal, 20)
     }
 }
 
