@@ -8,52 +8,65 @@
 import SwiftUI
 
 struct ContentView: View {
+    private let user: User = User.anjin
+    
     var body: some View {
         NavigationStack {
             List {
                 // 프로필, 가족, 구입 항목
                 Section {
-                    profileRow
+                    NavigationLink {
+                        ProfileView(user: user)
+                    } label: {
+                        profileRow
+                    }
+                    
                     familyRow
+                    
                     Text("구입에 포함된 서비스")
                 }
                 
                 // 에어팟
                 Section {
-                    settingRow(imageName: "airpodspro", backgroundColor: Color.gray, text: "안진의 AirPods Pro")
+                    SettingRow(imageName: "airpodspro", backgroundColor: Color.gray, text: "안진의 AirPods Pro")
                 }
                 
                 // 설정
                 Section {
-                    settingRow(imageName: "airplane", backgroundColor: Color.yellow, text: "에어플레인 모드")
-                    settingRow(imageName: "wifi", backgroundColor: Color.blue, text: "Wi-Fi")
-                    settingRow(imageName: "antenna.radiowaves.left.and.right", backgroundColor: Color.blue, text: "Bluetooth")
-                    settingRow(imageName: "antenna.radiowaves.left.and.right", backgroundColor: Color.green, text: "셀룰러")
-                    settingRow(imageName: "personalhotspot", backgroundColor: Color.green, text: "개인용 핫스팟")
+                    SettingRow(imageName: "airplane", backgroundColor: Color.yellow, text: "에어플레인 모드")
+                    
+                    SettingRow(imageName: "wifi", backgroundColor: Color.blue, text: "Wi-Fi")
+                    
+                    SettingRow(imageName: "antenna.radiowaves.left.and.right", backgroundColor: Color.blue, text: "Bluetooth")
+                    
+                    SettingRow(imageName: "antenna.radiowaves.left.and.right", backgroundColor: Color.green, text: "셀룰러")
+                    
+                    SettingRow(imageName: "personalhotspot", backgroundColor: Color.green, text: "개인용 핫스팟")
                 }
             }
+            .navigationTitle("설정")
         }
     }
     
-    var profileRow: some View {
+    private var profileRow: some View {
         HStack {
-            Image("anjin")
+            Image(user.imageName)
                 .resizable()
                 .frame(width: 80, height: 80)
                 .background(Color.indigo.opacity(0.3))
                 .clipShape(RoundedRectangle(cornerRadius: 90))
                 
             VStack(alignment: .leading) {
-                Text("이안진")
+                Text(user.name)
                     .font(.title2)
                 
                 Text("Apple ID, iCloud+, 미디어 및 구입 항목")
-                    .font(.footnote)
+                    .font(.caption)
             }
         }
     }
     
-    var familyRow: some View {
+    private var familyRow: some View {
         HStack {
             HStack(spacing: -10) {
                 Image("anjin")
@@ -76,19 +89,6 @@ struct ContentView: View {
             
             Text("가족")
                 .font(.title3)
-        }
-    }
-    
-    @ViewBuilder
-    private func settingRow(imageName: String, backgroundColor: Color, text: String) -> some View {
-        HStack {
-            Image(systemName: imageName)
-                .foregroundStyle(Color.white)
-                .frame(width: 32, height: 32)
-                .background(backgroundColor)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-            
-            Text(text)
         }
     }
 }
