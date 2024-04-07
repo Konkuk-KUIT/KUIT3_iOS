@@ -45,5 +45,7 @@ struct ProfileView: View {
                 SettingRow(imageName: "goforward.plus", backgroundColor: Color.gray, text: "구독")
             }
         }
+        .navigationTitle("Apple ID")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
