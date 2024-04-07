@@ -25,19 +25,16 @@ struct ModalView: View {
     ]
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                Divider()
-                ForEach(contents) { content in
-                    VStack {
-                        NavigationLink(destination: Text("릴스")) {
-                            modalInfo(content: content)
-                        }
-                    }
+        VStack {
+            Text("만들기")
+                .font(.system(size: 20, weight: .semibold))
+            Divider()
+            ForEach(contents) { content in
+                VStack {
+                    modalInfo(content: content)
                 }
             }
-            .navigationTitle("만들기")
-            .navigationBarTitleDisplayMode(.inline)
+            
         }
         
     }
@@ -57,5 +54,7 @@ struct ModalView: View {
             .frame(height: 50)
         }
     }
-    
+}
+#Preview {
+    ModalView()
 }
