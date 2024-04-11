@@ -27,7 +27,8 @@ struct ModalView: View {
     var body: some View {
         VStack {
             Text("만들기")
-                .font(.system(size: 20, weight: .semibold))
+                .font(.system(size: 18, weight: .semibold))
+                .padding(.top, 10)
             Divider()
             ForEach(contents) { content in
                 VStack {
