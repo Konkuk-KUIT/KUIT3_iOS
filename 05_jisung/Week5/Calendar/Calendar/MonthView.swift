@@ -61,7 +61,7 @@ struct MonthView: View {
     @ViewBuilder
     private func customDayCell(_ date: Date) -> some View {
         ZStack {
-            ForEach(sampleData, id: \.self) { story in
+            ForEach(Story.sampleData, id: \.self) { story in
                 if Calendar.current.date(from: story.components) == date {
                     Image(story.image)
                         .resizable()
@@ -77,7 +77,7 @@ struct MonthView: View {
                 .font(.system(size: 15))
                 .fontWeight(.semibold)
                 .foregroundColor(
-                    sampleData.contains(where: { Calendar.current.date(from: $0.components) == date }) ? .white : .gray
+                    Story.sampleData.contains(where: { Calendar.current.date(from: $0.components) == date }) ? .white : .gray
                 )
         }
         .onTapGesture {

@@ -21,7 +21,8 @@ struct OverlayView: View {
                     .font(.title)
                     .fontWeight(.semibold)
                 
-                if let matchingElement = sampleData.first(where: { Calendar.current.date(from: $0.components) == date }) {
+
+                if let matchingElement = Story.sampleData.first(where: { Calendar.current.date(from: $0.components) == date }) {
                     Image(matchingElement.image)
                         .resizable()
                         .frame(width: 200, height: 200)
