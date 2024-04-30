@@ -12,12 +12,6 @@ struct SearchView: View {
     @State private var searchText = ""
     let instaPics = ["Insta1", "Insta2", "Insta3", "Insta4", "Insta5", "Insta6", "Insta7", "Insta8", "Insta9", "Insta10", "Insta1", "Insta3", "Insta5", "Insta7", "Insta9", "Insta2", "Insta4", "Insta6", "Insta8", "Insta10", "Insta10", "Insta9", "Insta8", "Insta7", "Insta6", "Insta5", "Insta4", "Insta3", "Insta2", "Insta1"]
     
-    private var columns: [GridItem] = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
-    
     var body: some View {
         VStack {
             RoundedRectangle(cornerRadius: 10)
