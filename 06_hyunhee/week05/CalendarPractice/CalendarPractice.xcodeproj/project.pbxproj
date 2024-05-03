@@ -15,6 +15,7 @@
 		4E18FEFA2BE2A03E00101AF0 /* CalendarPracticeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E18FEF92BE2A03E00101AF0 /* CalendarPracticeUITests.swift */; };
 		4E18FEFC2BE2A03E00101AF0 /* CalendarPracticeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E18FEFB2BE2A03E00101AF0 /* CalendarPracticeUITestsLaunchTests.swift */; };
 		4E8240312BE3AA8000E5CC14 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8240302BE3AA8000E5CC14 /* ContentView.swift */; };
+		4EF23D262BE4288F00D42EA6 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF23D252BE4288F00D42EA6 /* ImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		4E18FEF92BE2A03E00101AF0 /* CalendarPracticeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPracticeUITests.swift; sourceTree = "<group>"; };
 		4E18FEFB2BE2A03E00101AF0 /* CalendarPracticeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPracticeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4E8240302BE3AA8000E5CC14 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4EF23D252BE4288F00D42EA6 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				4E18FEE22BE2A03E00101AF0 /* Assets.xcassets */,
 				4E18FEE42BE2A03E00101AF0 /* Preview Content */,
 				4E8240302BE3AA8000E5CC14 /* ContentView.swift */,
+				4EF23D252BE4288F00D42EA6 /* ImageView.swift */,
 			);
 			path = CalendarPractice;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EF23D262BE4288F00D42EA6 /* ImageView.swift in Sources */,
 				4E18FEE12BE2A03D00101AF0 /* CalendarView.swift in Sources */,
 				4E18FEDF2BE2A03D00101AF0 /* CalendarPracticeApp.swift in Sources */,
 				4E8240312BE3AA8000E5CC14 /* ContentView.swift in Sources */,

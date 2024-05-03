@@ -9,6 +9,10 @@ import SwiftUI
 
 struct CalendarView: View {
 //    @State var selectedDate: Date = Date()
+    @State var isPresent = false
+    @State var selectedImage: Image? = nil
+    @State var selectedDate: Date? = nil
+    
     var baseDate: Date
     var storyDate: [Int]
     var images: [Image]
@@ -34,7 +38,11 @@ struct CalendarView: View {
                 }
                 
                 ForEach(getMonthDates(), id: \.self) { date in
-                    customDayCell(date)
+                    let storyDate = storyDate.firstIndex(of: Int(date.date)!)
+                    let isStory = storyDate != nil
+                    let image = isStory ? images[storyDate!] : nil
+                    
+                    customDayCell(date, isStory: isStory, image: image)
                 }
             }
 //            .padding(.bottom, 60)
@@ -47,28 +55,31 @@ struct CalendarView: View {
 
     }
     
-    
     @ViewBuilder
-    private func customDayCell(_ date: Date) -> some View {
-        let storyDate = storyDate.firstIndex(of: Int(date.date)!)
-        let isStory = storyDate != nil
-        ZStack {
-            if(isStory && !date.isFuture) {
-                let image = images[storyDate!]
-                image
-                    .resizable()
-                    .frame(width: 40, height: 40)
-                    .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-                    .opacity(0.8)
+    private func customDayCell(_ date: Date, isStory: Bool, image: Image?) -> some View {
+        
+        Button() {
+            isPresent = true
+            selectedImage = image
+            selectedDate = date
+        } label: {
+            ZStack {
+                if(isStory && !date.isFuture) {
+                    image!
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                        .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                        .opacity(0.8)
+                }
+                Text("\(date.date)")
+                    .frame(width:40, height:40)
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundStyle(isStory && !date.isFuture ? Color(.black) : Color(.gray))
             }
-            Text("\(date.date)")
-                .frame(width:40, height:40)
-                .font(.system(size: 16, weight: .semibold))
-                .foregroundStyle(isStory && !date.isFuture ? Color(.black) : Color(.gray))
         }
-        .navigationDestination() {
-            
-        }
+        .fullScreenCover(isPresented: $isPresent, content: {
+            ImageView(isPresent: $isPresent, image: $selectedImage, date: $selectedDate)
+        })
     }
     
     private func countEmptyDay() -> Int {
@@ -135,5 +146,5 @@ extension Date {
 }
 
 #Preview {
-    CalendarView(baseDate: Date.now, storyDate: [1], images:[Image("1"), Image("2"), Image("3")])
+    CalendarView(baseDate: Date.now, storyDate: [1, 3, 7], images:[Image("1"), Image("2"), Image("3")])
 }
