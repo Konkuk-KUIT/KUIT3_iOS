@@ -47,7 +47,7 @@ struct NameModifyView: View {
                 
                 ToolbarItem(placement: .confirmationAction) {
                     Button("완료", action: saveName)
-                        .disabled(userLastName == "" || userFirstName == "")
+                        .disabled(userLastName.isEmpty || userFirstName.isEmpty)
                 }
             }
         }
