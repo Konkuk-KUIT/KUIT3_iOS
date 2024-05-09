@@ -13,8 +13,7 @@ struct OverlayView: View {
     
     var body: some View {
         ZStack {
-            Rectangle()
-                .foregroundStyle(.gray.opacity(0.5))
+            Color.gray.opacity(0.5)
             
             VStack {
                 Text(date.formatted(date: .abbreviated, time: .omitted))
