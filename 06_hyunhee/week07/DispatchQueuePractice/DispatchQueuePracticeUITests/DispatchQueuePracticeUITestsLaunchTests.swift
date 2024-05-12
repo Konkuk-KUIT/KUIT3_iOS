@@ -1,13 +1,13 @@
 //
-//  animation2UITestsLaunchTests.swift
-//  animation2UITests
+//  DispatchQueuePracticeUITestsLaunchTests.swift
+//  DispatchQueuePracticeUITests
 //
 //  Created by lee hyunhee on 5/13/24.
 //
 
 import XCTest
 
-final class animation2UITestsLaunchTests: XCTestCase {
+final class DispatchQueuePracticeUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

@@ -1,6 +1,6 @@
 //
-//  animation2App.swift
-//  animation2
+//  DispatchQueuePracticeApp.swift
+//  DispatchQueuePractice
 //
 //  Created by lee hyunhee on 5/13/24.
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct animation2App: App {
+struct DispatchQueuePracticeApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
