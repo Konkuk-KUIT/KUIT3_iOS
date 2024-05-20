@@ -31,9 +31,12 @@ struct DragAnimation: View {
                             //offset() modifier가 dragAmount를 받으므로 드래그하면 offset만큼 뷰 이동 가능
                             //CGSize타입(translation.width, translation.height로 접근 가능)
                         }
+<<<<<<< HEAD
 //                        .onEnded { _ in
 //                            dragAmount = CGSize.zero
 //                        }
+=======
+>>>>>>> 34f3a4b ([Week7-jisung] 미션 완료)
                 )
                 .animation(.bouncy, value: dragAmount)
             
