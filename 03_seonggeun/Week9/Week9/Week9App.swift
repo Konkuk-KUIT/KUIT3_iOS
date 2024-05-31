@@ -10,7 +10,7 @@ import GoogleSignIn
 import GoogleSignInSwift
 
 @main
-struct SocialLoginUIApp: App {
+struct Week9App: App {
     var body: some Scene {
         WindowGroup {
             // UserData 인스턴스를 생성하여 url, name, email을 초기화합니다.
