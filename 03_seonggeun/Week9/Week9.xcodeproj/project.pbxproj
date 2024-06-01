@@ -13,7 +13,6 @@
 		8028BF302C09BE1900D3B995 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8028BF2F2C09BE1900D3B995 /* Assets.xcassets */; };
 		8028BF332C09BE1900D3B995 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8028BF322C09BE1900D3B995 /* Preview Assets.xcassets */; };
 		807768D52C09C46300B966DB /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807768D42C09C46300B966DB /* MyPageView.swift */; };
-		80AA6EDF2C09C20F005E7B73 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AA6EDE2C09C20F005E7B73 /* UserData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +24,6 @@
 		8028BF322C09BE1900D3B995 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		806EA0132C09C0C6003D47F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		807768D42C09C46300B966DB /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
-		80AA6EDE2C09C20F005E7B73 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		A85E3A4DDB3D8EF762B0151C /* Pods-Week9.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Week9.release.xcconfig"; path = "Target Support Files/Pods-Week9/Pods-Week9.release.xcconfig"; sourceTree = "<group>"; };
 		B75AC136BBB32F1D6EB43F7A /* Pods_Week9.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Week9.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -65,7 +63,6 @@
 			children = (
 				806EA0132C09C0C6003D47F1 /* Info.plist */,
 				8028BF2B2C09BE1700D3B995 /* Week9App.swift */,
-				80AA6EDE2C09C20F005E7B73 /* UserData.swift */,
 				8028BF2D2C09BE1700D3B995 /* ContentView.swift */,
 				8028BF2F2C09BE1900D3B995 /* Assets.xcassets */,
 				8028BF312C09BE1900D3B995 /* Preview Content */,
@@ -213,7 +210,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80AA6EDF2C09C20F005E7B73 /* UserData.swift in Sources */,
 				807768D52C09C46300B966DB /* MyPageView.swift in Sources */,
 				8028BF2E2C09BE1700D3B995 /* ContentView.swift in Sources */,
 				8028BF2C2C09BE1700D3B995 /* Week9App.swift in Sources */,
