@@ -1,5 +1,5 @@
 //
-//  UserData.swift
+//  _UserData.swift
 //  Week9
 //
 //  Created by 박성근 on 5/31/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserData {
+struct UserData: Codable {
     let url: URL?
     let name: String
     let email: String
