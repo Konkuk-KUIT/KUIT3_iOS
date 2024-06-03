@@ -28,7 +28,7 @@ struct ContentView: View {
                 }
             }
             Button("delete user") {
-                MyAPI().deleteUserById(id: 4) { u in
+                MyAPI().deleteUserById(id: 5) { u in
                     MyAPI().getUser() { u1 in
                         users = u1
                     }

@@ -5,12 +5,14 @@
 //  Created by lee hyunhee on 6/3/24.
 //
 
+import SwiftUI
 import Foundation
 import KakaoSDKCommon
 import KakaoSDKAuth
 import KakaoSDKUser
 
 class kakaoLogin {
+    @AppStorage("nickname") var nickname : String = ""
     let kakaoAppKey = Bundle.main.infoDictionary?["KAKAO_APP_KEY"] ?? ""
     
     func login() {
@@ -37,6 +39,7 @@ class kakaoLogin {
                 //do something
                 _ = user
                 print(user?.kakaoAccount?.profile?.nickname?.description ?? "")
+                self.nickname = user?.kakaoAccount?.profile?.nickname?.description ?? ""
                 print(user?.kakaoAccount?.profile?.profileImageUrl?.absoluteString ?? "")
             }
         }

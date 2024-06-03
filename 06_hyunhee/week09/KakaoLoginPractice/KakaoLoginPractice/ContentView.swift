@@ -9,6 +9,7 @@ import SwiftUI
 
 
 struct ContentView: View {
+    @AppStorage("nickname") var nickname : String = ""
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -21,6 +22,7 @@ struct ContentView: View {
             Button("get user Info") {
                 kakaoLogin().getUserInfo()
             }
+            Text("\(nickname)")
         }
         .padding()
         .onAppear {
