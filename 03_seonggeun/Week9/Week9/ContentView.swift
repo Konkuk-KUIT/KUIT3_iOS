@@ -4,6 +4,7 @@ import GoogleSignInSwift
 
 // _UserData를 Codable로 만들어줍니다.
 struct _UserData: Codable {
+    // url: profile image
     var url: URL?
     var name: String
     var email: String
@@ -14,7 +15,7 @@ struct ContentView: View {
     @State private var isLogined = false
     // 유저 데이터
     @State private var userData: _UserData
-    // 팝업용
+    // popUp
     @State private var isAlert = false
 
     public init(isLogined: Bool = false, userData: _UserData = _UserData(url: nil, name: "", email: "")) {
@@ -89,12 +90,9 @@ struct ContentView: View {
             guard let profile = result.user.profile else { return }
             let data = _UserData(url: profile.imageURL(withDimension: 180), name: profile.name, email: profile.email)
             userData = data
+            // If sign in succeeded, display the app's main content View.
             isLogined = true
-            saveUserData()
-        }
-    }
-
-    // UserDefaults에 사용자 데이터를 저장하는 함수
+            saveUsers에 사용자 데이터를 저장하는 함수
     func saveUserData() {
         if let encoded = try? JSONEncoder().encode(userData) {
             UserDefaults.standard.set(encoded, forKey: "userData")

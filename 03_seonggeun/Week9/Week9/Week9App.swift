@@ -20,6 +20,11 @@ struct Week9App: App {
                     // Google Sign-In 인스턴스가 URL을 처리하도록 합니다.
                     GIDSignIn.sharedInstance.handle(url)
                 }
+                .onAppear() {
+                    GIDSignIn.sharedInstance.restorePreviousSignIn {_,_ in 
+                        // Check if `user` exists; otherwise, do something with `error`
+                    }
+                }
         }
     }
 }
